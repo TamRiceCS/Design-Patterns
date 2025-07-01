@@ -1,6 +1,9 @@
 #include <iostream>
+#include "pattern.cpp"
 
-class Singleton {
+// probably going to want to rewrite this  (have it extend the pattern class) c:
+
+class Singleton : private Pattern {
     // protected instance of singleton class (private and can't be inherited)
     protected:
         Singleton(){}; // constructor is private

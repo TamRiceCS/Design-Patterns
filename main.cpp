@@ -12,71 +12,71 @@
 
 int main()
 {
-
-    // starting program prompts
     std::vector<std::string> introduction;
-    introduction.push_back("\nWelcome to my simple program to demo design patterns");
-    introduction.push_back("1. How to use");
-    introduction.push_back("2. Pick a design pattern");
-    introduction.push_back("3. Further learning");
-    introduction.push_back("4. Possible future updates");
-    introduction.push_back("5. Quit");
+    std::vector<std::vector<std::string>> designPatterns;
+    std::string userInput = "0"; // even though user input is a char, we are using a string as a safety measure in case users try to enter more than one char
 
-    // further options
-    std::vector<std::vector<std::string>> options;
-    // how to
-    options.push_back({"Pick a design pattern via option 2. Upon picking a pattern you will be presented with: a short paragraph explaining the pattern along with my perceived dificulty implementing it (Easy, Moderate, Difficult), an ascii UML diagram and written description, and options to further interact with the design pattern. Some will be very straight forward, others a lot more involved. Press any key to quit."});
-    // list of patterns
-    options.push_back({"0. Back", "1. Singleton", "2. Factory Method", "3. Abstract Factory", "4. Builder Pattern", "5. Prototype Pattern"});
+    std::cout << "\n********************************************************************************************" << std::endl;
+    introduction.push_back("Welcome to my design patterns demo, it is a simple demonstration of knowledge and skill.");
+    introduction.push_back("Please pick a category of design pattern to explore any pattern under that category.");
+    introduction.push_back("To quit this simple terminal program press \"q\", thank you!");
 
-    // user input
-    int userSays = 0;
-
-
-    for(int i = 0; i < introduction.size(); i++){
+    for(int i = 0; i < introduction.size(); i++) {
         std::cout << introduction[i] << std::endl;
     }
 
-    while(userSays != 5) {
-        std::cout << "\nYour Selection: ";
-        std::cin >> userSays;
-        Singleton& Number = Singleton::get_inst();
-        
-        switch (userSays) {
-            case 1: 
-                std::cout << "\n******************************************" << std::endl;
-                std::cout << "Your current design pattern options are... " << std::endl;
-                std::cout << "******************************************" << std::endl;
-                for(int i = 0; i < options[1].size(); i++){
-                    std::cout << options[1][i] << std::endl;
-                }
-                
-                std::cout << "\nPick an option or quit: ";
-                std::cin >> userSays;
+    designPatterns.push_back({"1. Creational", "1. Singleton" , "2. Factory Method", "3. Abstract Factory", "4. Builder Pattern", "5. Prototype Pattern"});
+    designPatterns.push_back({"2. Behavioral", "1. Chain of Responsibility", "2. Command Pattern", "3. Template Pattern", "4. Mediator Pattern", "5. Momento Pattern", "6. Observer Pattern", "7. State Pattern", "8. Strategy Pattern", "9. Visitor Pattern"});
+    designPatterns.push_back({"3. Structural", "1. Adapter Pattern", "2. Bridge Pattern", "3. Composite Pattern", "4. Decorator Pattern", "5. Facade Pattern", "6. Flyweight Pattern", "7. Proxy Pattern"});
 
-                switch (userSays) {
-                    case 1:
-                        std::cout << "\n***Singleton***" << std::endl;
-                        // demo code out
-                        std::cout << "The singleton pattern only allows you to create one instance of the object that will be shared as long as the object's deconstructor is not called." << std::endl;
-                        
-                        break;
-                    default:
-                        std::cout << "Let's pretend this does things..." <<std::endl; 
-                        break;
-                }
-                break;
-            case 2: 
-                std::cout << "Option 2" << std::endl;
-                break;
-            case 3: 
-                std::cout << "Option 3" << std::endl;
-                break;
-            case 4: 
-                std::cout << "Option 4" << std::endl;
-                break;        
-            }
+    for(int i = 0; i < designPatterns.size(); i++) {
+        std::cout << designPatterns[i][0] << std::endl;
     }
+
+    std::cout << "\nYour input: ";
+    std::cin >> userInput;
+
+    while(userInput != "q") {
+        // using an if statement instead of switch because the compiler will get mad at class objects instantiated in the switch. there is no need to have every class variable initialized at start.
+        if(userInput == "1") {
+            std::cout << "********************************************************************************************" << std::endl;
+            std::cout << "Please pick a creational pattern to explore, enter \"b\" to go back to the main menu." << std::endl;
+            for(int i = 1; i < designPatterns[0].size(); i++) {
+                std::cout << designPatterns[0][i] << std::endl;
+            }
+
+            // take in a user input of which pattern to use
+            while(userInput != "b") {
+                // execute code based on which pattern is chosen.
+                // user hits b to exit the pattern
+                    // immediately set it to 0, another b is needed to hit the main menu.
+                // place all the intro code at the end of the loop
+                // if b is set at the end, exit to main while loop
+            }
+        }
+        else if(userInput == "2") {
+            std::cout << "********************************************************************************************" << std::endl;
+            std::cout << "Please pick a creational pattern to explore, enter \"b\" to go back to the main menu." << std::endl;
+            for(int i = 1; i < designPatterns[1].size(); i++) {
+                std::cout << designPatterns[1][i] << std::endl;
+            }
+        }
+        else if(userInput == "3"){
+            std::cout << "********************************************************************************************" << std::endl;
+            std::cout << "Please pick a creational pattern to explore, enter \"b\" to go back to the main menu." << std::endl;
+            for(int i = 1; i < designPatterns[2].size(); i++) {
+                std::cout << designPatterns[2][i] << std::endl;
+            }
+        }
+        else{
+            std::cout << "Hmmmm, this does not look like a valid input. Please try again!" << std::endl;
+        }
+
+        std::cout << "\nYour input: ";
+        std::cin >> userInput;
+    }
+
+
 
     return 0;
 }
