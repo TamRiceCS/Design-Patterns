@@ -29,24 +29,29 @@ int main()
     designPatterns.push_back({"2. Behavioral", "1. Chain of Responsibility", "2. Command Pattern", "3. Template Pattern", "4. Mediator Pattern", "5. Momento Pattern", "6. Observer Pattern", "7. State Pattern", "8. Strategy Pattern", "9. Visitor Pattern"});
     designPatterns.push_back({"3. Structural", "1. Adapter Pattern", "2. Bridge Pattern", "3. Composite Pattern", "4. Decorator Pattern", "5. Facade Pattern", "6. Flyweight Pattern", "7. Proxy Pattern"});
 
-    for(int i = 0; i < designPatterns.size(); i++) {
-        std::cout << designPatterns[i][0] << std::endl;
-    }
-
-    std::cout << "\nYour input: ";
-    std::cin >> userInput;
-
     while(userInput != "q") {
+        std::cout << "Pick a design pattern category." << std::endl;
+        for(int i = 0; i < designPatterns.size(); i++) {
+            std::cout << designPatterns[i][0] << std::endl;
+        }
+
+        std::cout << "\nYour input: ";
+        std::cin >> userInput;
         // using an if statement instead of switch because the compiler will get mad at class objects instantiated in the switch. there is no need to have every class variable initialized at start.
         if(userInput == "1") {
-            std::cout << "********************************************************************************************" << std::endl;
+            userInput = "0"; // make it so another user option input is needed.
+            std::cout << "\n********************************************************************************************" << std::endl;
             std::cout << "Please pick a creational pattern to explore, enter \"b\" to go back to the main menu." << std::endl;
             for(int i = 1; i < designPatterns[0].size(); i++) {
                 std::cout << designPatterns[0][i] << std::endl;
             }
 
+            std::cout << "\nYour input2: ";
+            std::cin >> userInput;
+
             // take in a user input of which pattern to use
             while(userInput != "b") {
+                break;
                 // execute code based on which pattern is chosen.
                 // user hits b to exit the pattern
                     // immediately set it to 0, another b is needed to hit the main menu.
@@ -55,14 +60,14 @@ int main()
             }
         }
         else if(userInput == "2") {
-            std::cout << "********************************************************************************************" << std::endl;
+            std::cout << "\n********************************************************************************************" << std::endl;
             std::cout << "Please pick a creational pattern to explore, enter \"b\" to go back to the main menu." << std::endl;
             for(int i = 1; i < designPatterns[1].size(); i++) {
                 std::cout << designPatterns[1][i] << std::endl;
             }
         }
         else if(userInput == "3"){
-            std::cout << "********************************************************************************************" << std::endl;
+            std::cout << \n"********************************************************************************************" << std::endl;
             std::cout << "Please pick a creational pattern to explore, enter \"b\" to go back to the main menu." << std::endl;
             for(int i = 1; i < designPatterns[2].size(); i++) {
                 std::cout << designPatterns[2][i] << std::endl;
@@ -71,9 +76,6 @@ int main()
         else{
             std::cout << "Hmmmm, this does not look like a valid input. Please try again!" << std::endl;
         }
-
-        std::cout << "\nYour input: ";
-        std::cin >> userInput;
     }
 
 
