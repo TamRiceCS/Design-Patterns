@@ -1,8 +1,5 @@
 #include <iostream>
 #include <string>
-#include "pattern.cpp"
-
-// probably going to want to rewrite this  (have it extend the pattern class) c:
 
 class Singleton : public Pattern {
     public:

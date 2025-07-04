@@ -2,8 +2,9 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "pattern.cpp"
 #include "singleton.cpp"
-
+#include "factorymethod.cpp"
 /*
     How to run: 
         g++ main.cpp -o main
